@@ -31,25 +31,25 @@ function Navbar() {
                     <div className={"collapse navbar-collapse stylish-menu" + (isNavOpen ? " show" : "")} id="navbarNav">
                         <ul className="navbar-nav mx-auto">
                             <li  className="nav-item">
-                                <Link className="nav-link" to="/" onClick={closeMenu}>Home</Link>
+                                <a className="nav-link"  href="/" onClick={closeMenu}>Home</a>
                             </li>
                             <li  className="nav-item">
-                                <Link className="nav-link" to="/about" onClick={closeMenu}>About</Link>
+                                <a className="nav-link" href="/about" onClick={closeMenu}>About</a>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/application" onClick={closeMenu}>Application</Link>
+                                <a className="nav-link" href="/application" onClick={closeMenu}>Application</a>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/" onClick={closeMenu}>Page4</Link>
+                                <a className="nav-link" href="/" onClick={closeMenu}>Page4</a>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/" onClick={closeMenu}>Page5</Link>
+                                <a className="nav-link" href="/" onClick={closeMenu}>Page5</a>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/" onClick={closeMenu}>Page6</Link>
+                                <a className="nav-link" href="/" onClick={closeMenu}>Page6</a>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/" onClick={closeMenu}>Page7</Link>
+                                <a className="nav-link" href="#" onClick={closeMenu}>Page7</a>
                             </li>
                         </ul>
                     </div>
