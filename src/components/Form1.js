@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { addresses } from './constant';
+import { useNavigate } from 'react-router-dom';
 
 function Form1() {
     const apiUrl = process.env.REACT_APP_SERVER_URL;
     const [errors, setErrors] = useState({});
-
+    const [message, setMessage] = useState(''); // Added useState for message
+    const navigate = useNavigate()
     const [selectedCurrentState, setSelectedCurrentState] = useState('');
     const [selectedCurrentCity, setSelectedCurrentCity] = useState('');
 
@@ -67,22 +69,7 @@ function Form1() {
 
     async function submitForm(e) {
         e.preventDefault();
-        let valid = true;
-        const newErrors = {};
-        Object.keys(userData).forEach(key => {
-            if (!userData[key]) {
-                valid = false;
-                newErrors[key] = 'Please enter value';
-            }
-        });
-
-        setErrors(newErrors);
-        if (!valid) {
-            console.error('Validation failed');
-            return;
-        }
-
-        // If valid, submit data
+       
 
         try {
             const response = await fetch(`${apiUrl}/store_user_data`, {
@@ -92,9 +79,13 @@ function Form1() {
                 },
                 body: JSON.stringify(userData)
             });
+            const data = await response.json();
+            const message = data.message
+            console.log(message)
             if (response.ok) {
-                let data = await response.json();
-                console.log(data);
+
+                navigate(`/success`, { state: { message: message } });
+
             } else {
                 console.log("Error fetching delivery details");
             }
